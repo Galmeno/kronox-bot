@@ -33,7 +33,8 @@ root = ET.fromstring(r) #variant 2
 print(type(root))
 
 for schemaPost in root.iter('schemaPost'):
-    print(schemaPost[0].text) #bokningsId
+    """
+    #print(schemaPost[0].text) #bokningsId
     #print(schemaPost[1].text) #bokningstid
     #print(schemaPost[2].text) #timestamp_bokning
     print(schemaPost[3].text) #bokningssignatur
@@ -50,10 +51,10 @@ for schemaPost in root.iter('schemaPost'):
     print(schemaPost[14].text) #salsinfo, krockskydd
     print(schemaPost[15].text)
     #bokningsId
-
-    for item in root.findall('./schemaPost/bokadeDatum'):
-        print("\nTillfälle:")
+    """
+    for item in root.findall('./schemaPost/bokadeDatum/'):
+        print(f"\nTillfälle: {schemaPost[12].text}")#Beskrivning - fel nivå
         di = item.attrib
-        for key, value in di.items():
-            print(key, ' : ', value)
-        print(schemaPost[12].text)#Beskrivning - fel nivå
+        for tag, value in di.items():
+            print(tag, ' : ', value)
+        print(f"Salsinfo: {schemaPost[13].text}")#Beskrivning - fel nivå
