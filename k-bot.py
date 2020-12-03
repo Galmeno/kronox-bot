@@ -2,16 +2,12 @@
 """
 XML version av schemat borde vara det som är lättast att parsea.
 https://webbschema.mdh.se/setup/jsp/SchemaXML.jsp?startDatum=idag&intervallTyp=a&intervallAntal=1&forklaringar=true&sokMedAND=false&sprak=SV&resurser=k.DVA131-24025H20-%2C
-
 """
 import requests
 import json
+import xml.etree.ElementTree as ET #https://docs.python.org/3/library/xml.etree.elementtree.html
 
-#url breakdown
-url = "https://webbschema.mdh.se/setup/jsp/Schema.jsp?startDatum=idag&intervallTyp=a&intervallAntal=1&forklaringar=true&sokMedAND=false&sprak=SV&resurser=k.DVA131-24025H20-%2C"
-r = requests.get(url)
-rd = r.json()
-
+#START URL BREAKDOWN
 url_part_1 = 'https://webbschema.mdh.se/setup/jsp/SchemaXML.jsp?'
 start_datum = 'idag'
 intervall_typ = 'a'
@@ -19,9 +15,17 @@ intervall_antal = 1
 forklaringar = 'true' #url is string so bool type is not possible
 sok_med = 'false' #url is string so bool type is not possible
 sprak = 'sv'
-resurser = 'k.DVA131-24025H20-%2C'
+resurser = 'k.DVA131-24025H20-%2C' #kurskod med decorator
 
-url_build = url_part_1 + "startDatum=" + startdatum + "&intervallTyp=" + intervall_typ + "&intervallAntal" + intervall_antal + "&forklaringar=" + forklaringar + "&sokMedAND=false"+"&sprak"+ sprak + "&resurser=" + resurser
+url_build = url_part_1 + "startDatum=" + start_datum + "&intervallTyp=" + intervall_typ + "&intervallAntal=" + str(intervall_antal) + "&forklaringar=" + forklaringar + "&sokMedAND=false"+"&sprak"+ sprak + "&resurser=" + resurser
+print(url_build)
+#END URL BREAKDOWN
 
-
+#Request
+r = requests.get(url_build)
+print(type(r))
+r = str(r.content)
+print(r)
+print(type(r))
+#root = ET.parse(r).getroot() #grund
 
