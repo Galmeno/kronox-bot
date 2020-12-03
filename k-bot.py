@@ -29,9 +29,7 @@ r = requests.get(url_build)
 r = r.content
 
 #XML-parse
-root = ET.fromstring(r) #variant 2
-print(type(root))
-
+root = ET.fromstring(r)
 for schemaPost in root.iter('schemaPost'):
     """
     #print(schemaPost[0].text) #bokningsId
@@ -52,9 +50,16 @@ for schemaPost in root.iter('schemaPost'):
     print(schemaPost[15].text)
     #bokningsId
     """
+    children = schemaPost.getchildren()
+
     for item in root.findall('./schemaPost/bokadeDatum/'):
         print(f"\nTillfälle: {schemaPost[12].text}")#Beskrivning - fel nivå
         di = item.attrib
         for tag, value in di.items():
             print(tag, ' : ', value)
         print(f"Salsinfo: {schemaPost[13].text}")#Beskrivning - fel nivå
+print("\n")
+for item in root.findall('./schemaPost/resursTrad/'): #nod 3 lärarkod
+    df = item.attrib
+    for tag, value in df.items():
+        print(tag, ' : ', value)
