@@ -26,12 +26,11 @@ print("\n")
 
 #Request
 r = requests.get(url_build)
-print(type(r))
 r = r.content
-#print(r)
-print(type(r))
-print("\n")
 
+#XML-parse
 root = ET.fromstring(r) #variant 2
+print(type(root))
+
 for child in root:
     print(child.tag, child.attrib)
