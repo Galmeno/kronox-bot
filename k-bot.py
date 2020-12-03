@@ -1,7 +1,7 @@
 #k-bot.py
 """
 XML version av schemat borde vara det som är lättast att parsea.
-https://webbschema.mdh.se/setup/jsp/SchemaXML.jsp?startDatum=idag&intervallTyp=a&intervallAntal=1&forklaringar=true&sokMedAND=false&sprak=SV&resurser=k.DVA131-24025H20-%2C
+    https://webbschema.mdh.se/setup/jsp/SchemaXML.jsp?startDatum=idag&intervallTyp=a&intervallAntal=1&forklaringar=true&sokMedAND=false&sprak=SV&resurser=k.DVA131-24025H20-%2C
 """
 import requests
 import json
@@ -32,5 +32,16 @@ r = r.content
 root = ET.fromstring(r) #variant 2
 print(type(root))
 
-for child in root:
-    print(child.tag, child.attrib)
+for schemaPost in root.iter('schemaPost'):
+    #print(schemaPost[0].text) #bokningsId
+    #print(schemaPost[1].text) #bokningstid
+    #print(schemaPost[2].text) #timestamp_bokning
+    print(schemaPost[3].text) #sign
+    #print(schemaPost[4].text) #version
+    #print(schemaPost[5].text) #senast ändrad
+    #print(schemaPost[6].text) #senast ändrad ICAL
+    #print(schemaPost[7].text) #senast ändrad av
+    print(schemaPost[8].text) #Bokningen - fel här
+    print(schemaPost[9].text) #Resursträd
+
+    #bokningsId
