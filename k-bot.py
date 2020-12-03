@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET #https://docs.python.org/3/library/xml.etree.
 #START URL BREAKDOWN
 url_part_1 = 'https://webbschema.mdh.se/setup/jsp/SchemaXML.jsp?'
 start_datum = 'idag'
+slut_datum ='2020-12-31'
 intervall_typ = 'a'
 intervall_antal = 1
 forklaringar = 'true' #url is string so bool type is not possible
@@ -17,15 +18,20 @@ sok_med = 'false' #url is string so bool type is not possible
 sprak = 'sv'
 resurser = 'k.DVA131-24025H20-%2C' #kurskod med decorator
 
-url_build = url_part_1 + "startDatum=" + start_datum + "&intervallTyp=" + intervall_typ + "&intervallAntal=" + str(intervall_antal) + "&forklaringar=" + forklaringar + "&sokMedAND=false"+"&sprak"+ sprak + "&resurser=" + resurser
+url_build = url_part_1 + "startDatum=" + start_datum + "&slutDatum=" + slut_datum + "&intervallTyp=" + intervall_typ + "&intervallAntal=" + str(intervall_antal) + "&forklaringar=" + forklaringar + "&sokMedAND=false"+"&sprak"+ sprak + "&resurser=" + resurser
+print("\n\n")
 print(url_build)
+print("\n")
 #END URL BREAKDOWN
 
 #Request
 r = requests.get(url_build)
 print(type(r))
-r = str(r.content)
-print(r)
+r = r.content
+#print(r)
 print(type(r))
-#root = ET.parse(r).getroot() #grund
+print("\n")
 
+root = ET.fromstring(r) #variant 2
+for child in root:
+    print(child.tag, child.attrib)
