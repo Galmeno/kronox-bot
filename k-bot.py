@@ -33,15 +33,27 @@ root = ET.fromstring(r) #variant 2
 print(type(root))
 
 for schemaPost in root.iter('schemaPost'):
-    #print(schemaPost[0].text) #bokningsId
+    print(schemaPost[0].text) #bokningsId
     #print(schemaPost[1].text) #bokningstid
     #print(schemaPost[2].text) #timestamp_bokning
-    print(schemaPost[3].text) #sign
+    print(schemaPost[3].text) #bokningssignatur
     #print(schemaPost[4].text) #version
     #print(schemaPost[5].text) #senast ändrad
     #print(schemaPost[6].text) #senast ändrad ICAL
     #print(schemaPost[7].text) #senast ändrad av
-    print(schemaPost[8].text) #Bokningen - fel här
+    print(schemaPost[8][0].text) #Bokningen finns här - fel
     print(schemaPost[9].text) #Resursträd
-
+    print(schemaPost[10].text)
+    print(schemaPost[11].text)
+    print(schemaPost[12].text)
+    print(schemaPost[13].text)#Beskrivning
+    print(schemaPost[14].text) #salsinfo, krockskydd
+    print(schemaPost[15].text)
     #bokningsId
+
+    for item in root.findall('./schemaPost/bokadeDatum'):
+        print("\nTillfälle:")
+        di = item.attrib
+        for key, value in di.items():
+            print(key, ' : ', value)
+        print(schemaPost[12].text)#Beskrivning - fel nivå
