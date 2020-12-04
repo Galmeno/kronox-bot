@@ -19,6 +19,23 @@ def fetch_schdule(url): #request
     #Error handling, 200 msg osv...
     return result
 
+def print_kurser(kurser):
+    i = len(kurser)
+
+    if i == 1:
+        print(f'\nListar {i} kurs.\n')
+    else:
+        print(f'\nListar {i} kurser.\n')
+    
+    i -= 1
+    while i >= 0:
+        print(kurser[i])
+        i -= 1
+
+def add_kurs(kurser):
+    kurser.append(input("Lägg till kurskod (Kronox-format): "))
+    return kurser
+
 def print_post(etree,kurskod):
     print(f'Kurskod: {kurskod}')
     for schemaPost in root.iter('schemaPost'):
@@ -67,8 +84,8 @@ intervall_antal = 1
 forklaringar = 'true' #url is string so bool type is not possible
 sok_med = 'false' #url is string so bool type is not possible
 sprak = 'sv'
-kurser = ['DVA131-24025H20-']
-resurser = resurs_format(kurser[0])
+kurser = ['DVA131-24025H20-','DVA128-24136H20-']
+resurser = resurs_format(kurser[1])
 
 url_build = url_part_1 + "startDatum=" + start_datum + "&slutDatum=" + slut_datum + "&intervallTyp=" + intervall_typ + "&intervallAntal=" + str(intervall_antal) + "&forklaringar=" + forklaringar + "&sokMedAND=false"+"&sprak"+ sprak + "&resurser=" + resurser
 
@@ -83,3 +100,5 @@ root = ET.fromstring(r)
 
 #main
 print_post(root,kurser[0])
+kurser = add_kurs(kurser)
+print_kurser(kurser)
