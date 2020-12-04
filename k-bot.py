@@ -19,7 +19,8 @@ def fetch_schdule(url): #request
     #Error handling, 200 msg osv...
     return result
 
-def print_post(etree):
+def print_post(etree,kurskod):
+    print(f'Kurskod: {kurskod}')
     for schemaPost in root.iter('schemaPost'):
         """
         #print(schemaPost[0].text) #bokningsId
@@ -81,4 +82,4 @@ r = r.content
 root = ET.fromstring(r)
 
 #main
-print_post(root)
+print_post(root,kurser[0])
