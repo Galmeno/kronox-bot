@@ -1,0 +1,27 @@
+KXBot - KronoX schema i discord genom python
+--------------------------------------------
+
+Dependencies
+--------------------------------------------
+discord                 1.0.1              - discord client backend
+xml.etree.ElementTree                      - XML-parser
+requests                2.22.0             - används för att hämta schemat från KronoX i XML-format.
+
+https://docs.python.org/3/library/xml.etree.elementtree.html
+
+schemaPost[0] #bokningsId
+schemaPost[1] #bokningstid
+schemaPost[2] #timestamp_bokning
+schemaPost[3] #bokningssignatur
+schemaPost[4] #version
+schemaPost[5] #senast ändrad
+schemaPost[6] #senast ändrad ICAL
+schemaPost[7] #senast ändrad av
+schemaPost[8][0] #Bokningen finns här
+schemaPost[9] #Resursträd
+schemaPost[10]
+schemaPost[11]
+schemaPost[12]
+schemaPost[13] #Beskrivning
+schemaPost[14] #kommentar, krockskydd
+schemaPost[15] #bokningsId
