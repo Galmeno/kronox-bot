@@ -24,5 +24,14 @@ async def on_message(message):
         #await message.channel.send("DVA131")
         await message.channel.send("- - - - - - - - - - - - - - - - ")
         await message.channel.send("Visa schema med: !schema kurskod")
+    
+    #social
+    if message.content.startswith('haha'):
+        await message.channel.send(':pepelaugh:')
+    if message.content.startswith('wow'):
+        await message.channel.send(':pagchomp:')
+    if message.content.startswith('KXBot'):
+        await message.channel.send('At your service!')
+    #end social
 
 client.run(secret_token.token)

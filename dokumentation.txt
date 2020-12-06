@@ -1,4 +1,4 @@
-KXBot - KronoX schema i discord genom python
+KXBot - KronoX schema i Discord genom python
 --------------------------------------------
 
 Dependencies
