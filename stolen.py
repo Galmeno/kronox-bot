@@ -1,3 +1,4 @@
+@client.event
 async def on_message(msg):
     with open("answers.json", 'r') as f:
         inte = json.load(f)
@@ -11,6 +12,4 @@ async def on_message(msg):
                     if msg.content.lower() in tag['patterns']:
                         await msg.author.send(f"{tag['name']}, {random.choice(tag['responses'])}")
                         return
-                    else:
-                        await msg.author.send("Idek")
-                        return
+            await msg.author.send("Idek")
